@@ -13,21 +13,31 @@
 //     x.pause();
 //     x.currentTime = 0;
 // }
+function MusicPlayer(audioUrl){
+    this.audio = new Audio(audioUrl);
+    this.addEvents;  
+    }
 
-function MusicPlayer(audio){
-    this.audio = new Audio(audio);
-    }
-Audio.prototype.playAudio = function() {
-    var x = window.getElementById("audio");
-    x.play()
-    }
-Audio.prototype.pauseAudio = function() {
-    x.pause()
-    }
-Audio.prototype.stopAudio = function() {
-    x.pause();
-    x.currentTime = 0;
-    }
+
+    MusicPlayer.prototype.addEvents = function() {
+        let that = this 
+    document.querySelector('.Play').addEventListener('click', function(){    
+        that.audio.play();
+            
+    });
+    document.querySelector('.pause').addEventListener('click',function(){
+        that.audio.pause();
+    });
+    document.querySelector('.stop').addEventListener('click',function(){
+        that.audio.pause();
+        that.audio.currentTime = 0;
+    }); 
+        
+    };  
+        
+    const song = new MusicPlayer('https://st1.z1.fm/music/6/81/4-roses_are_red-oceans_(zvukoff.ru).mp3');
+  song.addEvents();
+        
 
 
 // Audio.prototype.Play = function Play() {document.querySelector('.Play').addEventListener('click', function(){    
